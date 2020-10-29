@@ -13,7 +13,7 @@
                 <show_billing_address>0</show_billing_address>
                 <redirect_to_one_step_checkout>0</redirect_to_one_step_checkout>
                 <auto_detect_address>eav</auto_detect_address>
-                <google_api_key>AIzaSyDOorkShHO1xhw2zbjz-OZdSKP-xQ65AS0</google_api_key>
+                <google_api_key>AIzaSyShHO1xhw2zbjz-OZdSKP-xQ65AS0</google_api_key>
                 <experian_api_key>dfe1d067-88ba-498d-b9eb-7c3b51fe44f0</experian_api_key>
             </general>
             <display_configuration>
