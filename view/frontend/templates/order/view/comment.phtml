@@ -1,0 +1,15 @@
+<?php
+/**
+ * @var $block \Magepow\OnestepCheckout\Block\Order\View\Comment
+ */
+?>
+<?php if ($commentHtml = $block->getOrderComment()): ?>
+    <div class="box box-order-comment">
+        <strong class="box-title">
+            <span><?php echo __('Order Comment') ?></span>
+        </strong>
+        <div class="box-content">
+            <?php echo $commentHtml; ?>
+        </div>
+    </div>
+<?php endif; ?>

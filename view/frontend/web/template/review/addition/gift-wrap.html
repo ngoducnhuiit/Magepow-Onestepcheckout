@@ -1,0 +1,11 @@
+
+<!-- ko if: quoteIsVirtual == 0 -->
+<div class="onestepcheckout-gift-wrap field choice col col-12">
+    <input type="checkbox" name="onestepcheckout-gift-wrap" data-bind="attr: {id: 'onestepcheckout-gift-wrap'}, checked: isUseGiftWrap" />
+    <label data-bind="attr: {for: 'onestepcheckout-gift-wrap'}">
+        <span data-bind="i18n: 'Gift Wrap'"></span>
+        <i data-bind="html: initialAmount"></i>
+    </label>
+</div>
+<!-- /ko -->
+

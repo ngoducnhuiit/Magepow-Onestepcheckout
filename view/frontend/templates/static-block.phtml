@@ -1,0 +1,11 @@
+<?php
+/**
+ * @var $block \Magepow\OnestepCheckout\Block\StaticBlock
+ */
+?>
+<?php
+$blockArray = $block->getStaticBlock();
+foreach ($blockArray as $item) {
+    echo '<div class="onestepcheckout-cms-block">' . $item['content'] . '</div>';
+}
+?>

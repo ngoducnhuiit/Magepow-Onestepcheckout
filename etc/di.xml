@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magepow\OnestepCheckout\Api\CheckoutManagementInterface" type="Magepow\OnestepCheckout\Model\CheckoutManagement"/>
+    <preference for="Magepow\OnestepCheckout\Api\GuestCheckoutManagementInterface" type="Magepow\OnestepCheckout\Model\GuestCheckoutManagement"/>
+
+    <type name="Magento\Customer\Model\Address">
+        <plugin name="setShouldIgnoreValidation" type="Magepow\OnestepCheckout\Model\Plugin\Customer\Address"/>
+    </type>
+    <type name="Magento\Quote\Model\Cart\TotalsConverter">
+        <plugin name="addGiftWrapInitialAmount" type="Magepow\OnestepCheckout\Model\Plugin\Quote\GiftWrap"/>
+    </type>
+    <type name="Magento\Customer\Model\AccountManagement">
+        <plugin name="mz_onestepcheckout_newaccount" type="Magepow\OnestepCheckout\Model\Plugin\Customer\AccountManagement"/>
+    </type>
+</config>

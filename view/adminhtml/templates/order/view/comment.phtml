@@ -1,0 +1,14 @@
+<?php
+/**
+ * @var $block \Magepow\OnestepCheckout\Block\Order\View\Comment;
+ */?>
+<?php if ($commentHtml = $block->getOrderComment()): ?>
+    <div class="admin__page-section-item order-onestepcheckout-comment">
+        <div class="admin__page-section-item-title">
+            <span class="title"><?php /* @escapeNotVerified */ echo __('Order Comment') ?></span>
+        </div>
+        <div class="admin__page-section-item-content">
+            <?php echo $commentHtml ?>
+        </div>
+    </div>
+<?php endif; ?>

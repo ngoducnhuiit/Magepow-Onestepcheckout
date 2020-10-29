@@ -1,0 +1,20 @@
+<?php
+/**
+ * @var $block \Magepow\OnestepCheckout\Block\Order\View\Survey
+ */
+?>
+<?php if (!empty($surveyQuestion = $block->getSurveyQuestion()) && !empty($surveyAnswers = $block->getSurveyAnswers())): ?>
+    <div class="box box-order-survey">
+        <strong class="box-title">
+            <span><?php echo __('Order Survey') ?></span>
+        </strong>
+        <div class="box-content">-
+            <div class="question">
+                <strong><?php echo __('Question') ?>: </strong><span><?php echo $surveyQuestion ?></span>
+            </div>
+            <div class="answers">
+                <strong><?php echo __('Answers') ?>: </strong><span><?php echo $surveyAnswers ?></span>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

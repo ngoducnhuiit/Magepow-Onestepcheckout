@@ -1,0 +1,19 @@
+<?php
+
+
+/** @var \Magepow\OnestepCheckout\Block\LayoutOnestep\CompatibleConfig $block */
+
+?>
+<?php if ($block->isEnableModulePostNL()) : ?>
+    <script type="text/javascript">
+        require.config({
+            config: {
+                mixins: {
+                    'Magepow_OnestepCheckout/js/view/shipping-method': {
+                        'Magepow_OnestepCheckout/js/view/shipping-postnl': true
+                    }
+                }
+            }
+        })
+    </script>
+<?php endif; ?>

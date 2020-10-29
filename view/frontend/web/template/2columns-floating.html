@@ -1,0 +1,58 @@
+
+
+<!-- ko foreach: getRegion('estimation') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+
+<!-- ko foreach: getRegion('authentication') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+
+<!-- ko foreach: getRegion('messages') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+
+<div class="opc-wrapper one-step-checkout-wrapper">
+    <div class="opc one-step-checkout-container opc-sticky" id="checkoutSteps">
+        <div class="col col-6 col-sm-5 col-xs-12">
+            <div class="row">
+                <!-- ko ifnot: window.checkoutConfig.mageConfig.isUsedMaterialDesign -->
+                <div class="col col-12" data-bind="scope: 'checkout.steps.shipping-step.shippingAddress'">
+                    <!-- ko template: getAddressTemplate() --><!-- /ko -->
+                </div>
+                <div class="col col-12" data-bind="scope: 'checkout.steps.shipping-step.billingAddress'">
+                    <!-- ko template: getAddressTemplate() --><!-- /ko -->
+                </div>
+                <!-- /ko -->
+                <!-- ko if: window.checkoutConfig.mageConfig.isUsedMaterialDesign -->
+                <div class=" col col-12 hoverable">
+                    <div class="row">
+                        <div class="col col-12" data-bind="scope: 'checkout.steps.shipping-step.shippingAddress'">
+                            <!-- ko template: getAddressTemplate() --><!-- /ko -->
+                        </div>
+                        <div class="col col-12" data-bind="scope: 'checkout.steps.shipping-step.billingAddress'">
+                            <!-- ko template: getAddressTemplate() --><!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+                <!-- /ko -->
+
+                <div class="col col-12 hoverable" data-bind="scope: 'checkout.steps.shipping-step'">
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                </div>
+                <div class="col col-12 hoverable" data-bind="scope: 'checkout.steps.billing-step'">
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                </div>
+                <div class="col-clear"></div>
+            </div>
+        </div>
+        <div class="col col-6 col-sm-7 col-xs-12 sticky">
+            <div class="row">
+                <div class="col col-12" data-bind="scope: 'checkout.sidebar'">
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                </div>
+                <div class="col-clear"></div>
+            </div>
+        </div>
+    </div>
+</div>

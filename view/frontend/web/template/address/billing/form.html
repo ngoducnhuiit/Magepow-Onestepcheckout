@@ -1,0 +1,41 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="billing-address-form" data-bind="visible: !isAddressSameAsShipping()">
+    <!-- ko foreach: getRegion('before-fields') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+    <form data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+        <fieldset class="fieldset address" data-form="billing-new-address">
+            <!-- ko foreach: getRegion('additional-fieldsets') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+            <!-- ko if: (isCustomerLoggedIn && customerHasAddresses) -->
+            <div class="choice field">
+                <input type="checkbox" class="checkbox"  data-bind="checked: saveInAddressBook, attr: {id: 'billing-save-in-address-book-' + getCode($parent)}" />
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <button class="action action-update"
+                                type="button"
+                                click="updateAddress" data-bind="attr: {for: 'billing-save-in-address-book-' + getCode($parent)}">
+                            <span translate="'Update'"/>
+                        </button>
+                        <button class="action action-cancel"
+                                type="button" data-bind="click: cancelAddressEdit, visible: canUseCancelBillingAddress()">
+                            <span data-bind="i18n: 'Cancel'">Cancel</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            <label class="label" data-bind="attr: {for: 'billing-save-in-address-book-' + getCode($parent)}" id="update-billing">
+                <span data-bind="i18n: 'Click the update button if you want to save the new address'"></span>
+            </label>
+
+            <!-- /ko -->
+        </fieldset>
+    </form>
+</div>

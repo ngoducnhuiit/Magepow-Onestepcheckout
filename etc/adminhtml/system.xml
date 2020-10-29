@@ -1,0 +1,239 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magepow" translate="label" sortOrder="10">
+            <label>Magepow</label>
+        </tab>
+        <section id="magepow_onestepcheckout" translate="label" type="text" sortOrder="8888" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>One Step Checkout</label>
+            <tab>magepow</tab>
+            <resource>Magepow_OnestepCheckout::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Configuration</label>
+
+                <field id="enabled" translate="label comment" sortOrder="10" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable One Step Checkout</label>
+                    <comment><![CDATA[Select <strong>Yes</strong> to enable the module.]]></comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label comment" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>One Step Checkout Page Title</label>
+                    <comment>Enter the title of the page.</comment>
+                </field>
+                <field id="description" translate="label comment" sortOrder="40" type="textarea" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>One Step Checkout Description</label>
+                    <comment>Enter description for the page. HTML allowed.</comment>
+                </field>
+                <field id="default_shipping_method" translate="label comment" sortOrder="70" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Shipping Method</label>
+                    <source_model>Magepow\OnestepCheckout\Model\System\Config\Source\ShippingMethods</source_model>
+                    <comment>Set default shipping method in the checkout process.</comment>
+                </field>
+                <field id="default_payment_method" translate="label comment" sortOrder="80" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Payment Method</label>
+                    <source_model>Magepow\OnestepCheckout\Model\System\Config\Source\PaymentMethods</source_model>
+                    <comment>Set default payment method in the checkout process.</comment>
+                </field>
+                <field id="notice_enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Enable Notifications</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="allow_guest_checkout" translate="label comment" sortOrder="90" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Allow Guest Checkout</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Select Yes to allow checking out as a guest. Guests can create an account in the Checkout Page.</comment>
+                </field>
+                <field id="redirect_to_one_step_checkout" translate="label comment" sortOrder="95" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Auto-redirect to One Step Checkout Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Select Yes to enable redirecting to the Checkout Page after a product's added to cart.</comment>
+                </field>
+                <field id="show_billing_address" translate="label comment" sortOrder="100" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Billing Address</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Select Yes to allow the <strong>Billing Address</strong> block to appear in the Checkout Page, or No to imply that <strong>Billing Address</strong> and <strong>Shipping Address</strong> are the same.]]></comment>
+                </field>
+                <field id="notice_type" translate="label comment" type="multiselect" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Category</label>
+                    <source_model>Magepow\OnestepCheckout\Model\Config\Source\NoticeType</source_model>
+                    <comment>Select categories that you want to receive notifications</comment>
+                    <depends>
+                        <field id="notice_enable">1</field>
+                    </depends>
+                </field>
+                <field id="auto_detect_address" sortOrder="101" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Use Auto Suggestion Technology</label>
+                    <source_model>Magepow\OnestepCheckout\Model\System\Config\Source\AddressSuggest</source_model>
+                    <comment><![CDATA[Select <strong>Google</strong> or <strong>Experian</strong> to use it for automatic address suggestion, or <strong>No</strong> to disable this feature.]]></comment>
+                </field>
+                <field id="google_api_key" sortOrder="102" type="text" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Google Api Key</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="auto_detect_address">google</field>
+                    </depends>
+                </field>
+                <field id="experian_api_key" sortOrder="102" type="text" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Experian Api Key</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="auto_detect_address">eav</field>
+                    </depends>
+                </field>
+                <field id="google_specific_country" sortOrder="102" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Restrict the auto suggestion for a specific country</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <depends>
+                        <field id="auto_detect_address">google</field>
+                    </depends>
+                </field>
+                <field id="pca_website_key" sortOrder="102" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Capture+ Key</label>
+                    <depends>
+                        <field id="auto_detect_address">pca</field>
+                    </depends>
+                </field>
+                <field id="pca_country_lookup" sortOrder="103" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>IP Country Lookup</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>The default country will be set based on location of the customer.</comment>
+                    <depends>
+                        <field id="auto_detect_address">pca</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="display_configuration" translate="label comment" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Display Configuration</label>
+                <field id="display_foothead" translate="label comment" sortOrder="8" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show/Hide Footer/Header</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Experiment: Show/Hide both Footer/Header at the same time. Should clear cache after making change]]></comment>
+                </field>
+                <field id="enabled_login_link" translate="label comment" sortOrder="5" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Login Link</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Select <strong>Yes</strong> to show a link for visitors to login.]]></comment>
+                </field>
+                <field id="show_coupon" translate="label comment" sortOrder="10" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Discount Code Section</label>
+                    <source_model>Magepow\OnestepCheckout\Model\System\Config\Source\ComponentPosition</source_model>
+                    <comment><![CDATA[Select <strong>Yes</strong> to show Discount Code section.]]></comment>
+                </field>
+                <field id="enabled_comments" translate="label comment" sortOrder="15" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Order Comment</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Select <strong>Yes</strong> to allow customers to comment on the order.]]></comment>
+                </field>
+                <field id="enabled_gift_message" translate="label comment" sortOrder="20" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable Gift Messages on order.</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Select <strong>Yes</strong> to allow leaving messages on the whole order.]]></comment>
+                </field>
+                <field id="enabled_gift_message_items" translate="label comment" sortOrder="25" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable Gift Messages on item</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Select <strong>Yes</strong> to allow leaving messages on each item.]]></comment>
+                </field>
+                <field id="show_toc" translate="label comment" sortOrder="30" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Terms and Conditions</label>
+                    <source_model>Magepow\OnestepCheckout\Model\System\Config\Source\ComponentPosition</source_model>
+                    <comment><![CDATA[Select <strong>No</strong> to hide <strong>Terms and Conditions</strong>, or select an area to display it.]]></comment>
+                </field>
+                <field id="enabled_social_login" translate="label comment" sortOrder="35" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable Social Login On Checkout Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <if_module_enabled>Magepow_SocialLogin</if_module_enabled>
+                    <comment><![CDATA[Select <strong>Yes</strong> to allow customers to login via their social network accounts. Supports magepow <a href="https://www.magepow.com/magento-2-social-login-extension" target="_blank">Social Login</a>]]></comment>
+                </field>
+                <group id="review_cart_section" translate="label" showInDefault="1" sortOrder="105" showInWebsite="1" showInStore="1">
+                    <label>Review Cart Section</label>
+                    <field id="enabled_review_cart_section" translate="label comment" sortOrder="10" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Show Order Review Section</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment><![CDATA[Select <strong>No</strong> to remove the Order Review section. The section is displayed by default.]]></comment>
+                        <config_path>magepow_onestepcheckout/display_configuration/enabled_review_cart_section</config_path>
+                    </field>
+                    <field id="show_item_list_toggle" translate="label comment" sortOrder="20" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Show Product List Toggle</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <depends>
+                            <field id="enabled_review_cart_section">1</field>
+                        </depends>
+                        <comment><![CDATA[Select <strong>Yes</strong> to show product list toggle.]]></comment>
+                        <config_path>magepow_onestepcheckout/display_configuration/show_item_list_toggle</config_path>
+                    </field>
+                    <field id="show_product_image" translate="label comment" sortOrder="30" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Show Product Thumbnail Image</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <depends>
+                            <field id="enabled_review_cart_section">1</field>
+                        </depends>
+                        <comment><![CDATA[Select <strong>Yes</strong> to show product thumbnail image.]]></comment>
+                        <config_path>magepow_onestepcheckout/display_configuration/show_product_image</config_path>
+                    </field>
+                </group>
+            </group>
+            <group id="design_configuration" translate="label comment" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Home Page Configuration</label>
+                <field id="page_layout" translate="label comment" sortOrder="1" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Checkout Page Layout</label>
+                    <source_model>Magepow\OnestepCheckout\Model\System\Config\Source\Layout</source_model>
+                    <comment>Select the layout used for the Checkout Page.</comment>
+                </field>
+                <field id="page_design" translate="label comment" sortOrder="10" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Page Style</label>
+                    <source_model>Magepow\OnestepCheckout\Model\System\Config\Source\Design</source_model>
+                    <comment>Select the design style for the Checkout Page.</comment>
+                </field>
+                <field id="heading_background" translate="label comment" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Heading Background Color</label>
+                    <validate>jscolor {hash:true,refine:false}</validate>
+                    <depends>
+                        <field id="page_design">flat</field>
+                    </depends>
+                </field>
+                <field id="heading_text" translate="label comment" sortOrder="25" type="text" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Heading Text Color</label>
+                    <validate>jscolor {hash:true,refine:false}</validate>
+                    <depends>
+                        <field id="page_design">flat</field>
+                    </depends>
+                </field>
+                <field id="radio_button_style" translate="label comment" sortOrder="26" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Radio Button Style</label>
+                    <depends>
+                        <field id="page_design">material</field>
+                    </depends>
+                    <source_model>Magepow\OnestepCheckout\Model\System\Config\Source\RadioStyle</source_model>
+                    <comment>Select the radio button style.</comment>
+                </field>
+                <field id="checkbox_button_style" translate="label comment" sortOrder="27" type="select" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>CheckBox Button Style</label>
+                    <source_model>Magepow\OnestepCheckout\Model\System\Config\Source\CheckboxStyle</source_model>
+                    <depends>
+                        <field id="page_design">material</field>
+                    </depends>
+                    <comment>Select the checkbox button style.</comment>
+                </field>
+                <field id="material_color" translate="label comment" sortOrder="28" type="text" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Material Color</label>
+                    <validate>jscolor {hash:true,refine:false}</validate>
+                    <comment>Change color icon heading, border input text, radio,checkbox buttons.</comment>
+                    <depends>
+                        <field id="page_design">material</field>
+                    </depends>
+                </field>
+                <field id="place_order_button" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Place Order button color</label>
+                    <validate>jscolor {hash:true,refine:false}</validate>
+                </field>
+                <field id="custom_css" sortOrder="100" type="textarea" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom CSS</label>
+                    <comment><![CDATA[Example: .step-title{background-color: #1979c3;}]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

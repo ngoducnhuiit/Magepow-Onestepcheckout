@@ -1,0 +1,6 @@
+
+
+<div class="billing-address-same-as-shipping-block field choice col col-12" data-bind="visible: canUseShippingAddress()">
+    <input type="checkbox" id="billing-address-checkbox" name="billing-address-same-as-shipping" data-bind="checked: isAddressSameAsShipping, click: useShippingAddress, attr: {id: 'billing-address-same-as-shipping'}"/>
+    <label data-bind="attr: {for: 'billing-address-same-as-shipping'}"  id="my-billing-address"><span data-bind="i18n: 'My billing and shipping address are the same'"></span></label>
+</div>

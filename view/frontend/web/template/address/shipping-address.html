@@ -1,0 +1,68 @@
+
+
+<div id="shipping" class="checkout-shipping-address" data-bind="fadeVisible: visible()">
+    <div class="step-title" data-role="title">
+        <span style="padding-right: 10px">1</span>
+<!--        <i class="fa fa-home"></i>-->
+        <!-- ko if: window.checkoutConfig.mageConfig.isUsedMaterialDesign -->
+        <span class="fa-stack fa-2x">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <strong class="fa-stack-1x fa-stack-text fa-inverse">1</strong>
+        </span>
+        <!-- /ko -->
+        <span data-bind="i18n: 'Shipping Address'"></span>
+    </div>
+    <div id="checkout-step-shipping"
+         class="step-content"
+         data-role="content">
+
+        <!-- ko if: (!quoteIsVirtual) -->
+            <!-- ko foreach: getRegion('customer-email') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        <!--/ko-->
+
+        <!-- ko foreach: getRegion('address-list') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+
+        <!-- ko foreach: getRegion('address-list-additional-addresses') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+
+        <!-- Address form pop up -->
+        <!-- ko if: (!isFormInline) -->
+        <button type="button"
+                data-bind="click: showFormPopUp, visible: !isNewAddressAdded()"
+                class="action action-show-popup">
+            <span data-bind="i18n: 'New Address'"></span></button>
+        <div id="opc-new-shipping-address" data-bind="visible: isFormPopUpVisible()">
+            <!-- ko template: 'Magepow_OnestepCheckout/address/shipping/form' --><!-- /ko -->
+        </div>
+        <!-- /ko -->
+
+        <!-- ko foreach: getRegion('before-form') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+
+            <!-- Inline address form -->
+            <!-- ko if: (isFormInline) -->
+            <!-- ko template: 'Magepow_OnestepCheckout/address/shipping/form' --><!-- /ko -->
+            <!-- /ko -->
+
+            <!-- ko if: (!isCustomerLoggedIn() && !quoteIsVirtual) -->
+                <!-- ko foreach: getRegion('customer-email') -->
+                    <!-- ko template: 'Magepow_OnestepCheckout/address/billing/create' --><!-- /ko -->
+                <!--/ko-->
+            <!--/ko-->
+
+            <div class="col-clear"></div>
+
+            <!-- ko scope: 'checkout.steps.shipping-step.billingAddress' -->
+                <!-- ko template: 'Magepow_OnestepCheckout/address/billing/checkbox' --><!-- /ko -->
+            <!--/ko-->
+        <!--/ko-->
+
+        <div class="col-clear"></div>
+    </div>
+</div>

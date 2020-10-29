@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magepow_OnestepCheckout::css/style.css"/>
+    </head>
+    <body>
+        <referenceBlock name="order_tab_info">
+            <block class="Magento\Backend\Block\Template" name="onestepcheckout_additional_content" template="Magepow_OnestepCheckout::order/additional.phtml">
+                <block class="Magepow\OnestepCheckout\Block\Order\View\Comment" name="order_comment" template="order/view/comment.phtml"/>
+                <block class="Magepow\OnestepCheckout\Block\Order\View\DeliveryTime" name="delivery_time" template="order/view/delivery-time.phtml"/>
+                <block class="Magepow\OnestepCheckout\Block\Order\View\Survey" name="survey" template="order/view/survey.phtml"/>
+            </block>
+        </referenceBlock>
+        <referenceBlock name="order_totals">
+            <block class="Magepow\OnestepCheckout\Block\Order\Totals" name="creditmemo.onestepcheckout.totals"/>
+        </referenceBlock>
+    </body>
+</page>

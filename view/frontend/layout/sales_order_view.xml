@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="onestepcheckout.additional.content" template="Magepow_OnestepCheckout::order/additional.phtml" after="-">
+                <block class="Magepow\OnestepCheckout\Block\Order\View\Comment" name="comment" template="order/view/comment.phtml"/>
+                <block class="Magepow\OnestepCheckout\Block\Order\View\DeliveryTime" name="delivery_time" template="order/view/delivery-time.phtml"/>
+                <block class="Magepow\OnestepCheckout\Block\Order\View\Survey" name="survey" template="order/view/survey.phtml"/>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="order_totals">
+            <block class="Magepow\OnestepCheckout\Block\Order\Totals" name="creditmemo.onestepcheckout.totals"/>
+        </referenceBlock>
+    </body>
+</page>

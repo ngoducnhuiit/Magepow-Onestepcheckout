@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Save address when estimate shipping method -->
+    <type name="Magento\Quote\Model\ShippingMethodManagement">
+        <plugin name="saveAddressWhenEstimate" type="Magepow\OnestepCheckout\Model\Plugin\Checkout\ShippingMethodManagement"/>
+    </type>
+    <type name="Magento\Authorization\Model\CompositeUserContext">
+        <plugin name="mz_onestepcheckout_usercontext" type="Magepow\OnestepCheckout\Model\Plugin\Authorization\UserContext"/>
+    </type>
+    <type name="Magento\Paypal\Model\Express">
+        <plugin name="mz_onestepcheckout_PaypalExpress" type="Magepow\OnestepCheckout\Model\Plugin\Paypal\Model\Express"/>
+    </type>
+    <preference for="Magento\Checkout\Api\AgreementsValidatorInterface" type="Magepow\OnestepCheckout\Model\AgreementsValidator"/>
+</config>

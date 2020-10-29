@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * menu
+ *
+ * @copyright Copyright © 2020 Magepow. All rights reserved.
+ * @author    @copyright Copyright (c) 2014 Magepow (<https://www.magepow.com>)
+ * @license <https://www.magepow.com/license-agreement.html>
+ * @Author: magepow<support@magepow.com>
+ * @github: <https://github.com/magepow>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magepow_OnestepCheckout::onestep_checkout"
+             title="Magepow" translate="title" module="Magepow_OnestepCheckout"
+             sortOrder="10" resource="Magepow_OnestepCheckout::onestep_checkout" />
+        <add id="Magepow_OnestepCheckout::configuration" title="Configuration"
+             module="Magepow_OnestepCheckout" sortOrder="20"
+             action="adminhtml/system_config/edit/section/onestepcheckout"
+             resource="Magepow_OnestepCheckout::configuration" parent="Magepow_OnestepCheckout::onestep_checkout"/>
+    </menu>
+</config>

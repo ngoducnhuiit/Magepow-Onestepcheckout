@@ -1,0 +1,44 @@
+
+
+<div class="block items-in-cart" data-bind="mageInit: {'collapsible':{'openedState': 'active', 'active': true}}">
+    <div class="title" data-role="title" data-bind="visible: window.checkoutConfig.mageConfig.isShowItemListToggle">
+        <strong role="heading">
+            <span data-bind="text: getItems().length"></span>
+            <!-- ko if: getItems().length == 1 -->
+            <span data-bind="i18n: 'Item in Cart'"></span>
+            <!-- /ko -->
+            <!-- ko if: getItems().length > 1 -->
+            <span data-bind="i18n: 'Items in Cart'"></span>
+            <!-- /ko -->
+        </strong>
+    </div>
+    <div class="content minicart-items" data-role="content">
+        <div class="minicart-items-wrapper overflowed">
+            <table id="checkout-review-table" class="data-table">
+                <colgroup>
+                    <col>
+                    <col width="1">
+                    <col width="1">
+                    <col width="1">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th class="a-center" data-bind="i18n: 'Product Name'"></th>
+                        <th class="a-center" data-bind="i18n: 'Qty'"></th>
+                        <th class="a-center" data-bind="i18n: 'Subtotal'"></th>
+                        <th class="a-center"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ko foreach: getItems() -->
+                    <tr class="product-item">
+                        <!-- ko foreach: $parent.elems() -->
+                            <!-- ko template: getTemplate() --><!-- /ko -->
+                        <!-- /ko -->
+                    </tr>
+                    <!-- /ko -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
